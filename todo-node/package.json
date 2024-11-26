@@ -1,0 +1,16 @@
+{
+  "name": "todo-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "hono": "^4.6.12"
+  }
+}
