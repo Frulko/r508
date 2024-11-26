@@ -9,7 +9,6 @@ const todos = [
 const server = http.createServer(async (req, res) => {
   const method = req.method;
 
-
   if (req.url.includes("/api/todos")) {
     if (method === "POST") {
       let body = "";

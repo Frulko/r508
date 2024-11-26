@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
+import { cors } from 'hono/cors'
 
 const todos = [
   { text: "Apprendre Node.js & Hono" },
@@ -7,6 +8,7 @@ const todos = [
 ];
 
 const app = new Hono();
+app.use('/api/*', cors())
 
 app.get('/api/todos', (c) => {
   return c.json(todos);
