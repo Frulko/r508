@@ -1,10 +1,11 @@
 
+import { config } from "@/config";
 import { revalidateTag } from "next/cache";
 import React from "react";
 
 async function getData() {
   console.log('todos: load')
-  const res = await fetch('http://localhost:8080/api/todos', {
+  const res = await fetch(config.baseUrl + '/api/todos', {
     next: { tags: ['todos'] }
   })
   return res.json()
@@ -17,7 +18,7 @@ async function TodoList() {
     'use server'
     console.log('todos: create new one')
     const text = formData.get('text');
-    await fetch("http://localhost:8080/api/todos", {
+    await fetch(config.baseUrl + "/api/todos", {
       method: "POST",
       body: JSON.stringify({ text }),
     })
