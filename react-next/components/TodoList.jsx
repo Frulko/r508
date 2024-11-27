@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import React from "react";
 
 async function getData() {
-  console.log('todos: load', getBaseUrl())
+  console.log('todos: load')
   const res = await fetch(getBaseUrl() + '/api/todos', {
     next: { tags: ['todos'] },
     cache: 'no-store',
