@@ -1,10 +1,10 @@
-import { config } from "@/config";
+import { config, getBaseUrl } from "@/config";
 import { revalidateTag } from "next/cache";
 import React from "react";
 
 async function getData() {
-  console.log('todos: load')
-  const res = await fetch(config.baseUrl + '/api/todos', {
+  console.log('todos: load', getBaseUrl())
+  const res = await fetch(getBaseUrl() + '/api/todos', {
     next: { tags: ['todos'] },
     cache: 'no-store',
   })
@@ -18,7 +18,7 @@ async function TodoList() {
     'use server'
     console.log('todos: create new one')
     const text = formData.get('text');
-    await fetch(config.baseUrl + "/api/todos", {
+    await fetch(getBaseUrl() + "/api/todos", {
       method: "POST",
       body: JSON.stringify({ text }),
       cache: 'no-store',
