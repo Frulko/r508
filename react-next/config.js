@@ -1,8 +1,12 @@
-const getBaseUrl = () => {
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR devrait utiliser l'URL Vercel
-  return process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''; // dev SSR devrait utiliser localhost
-};
-
+export function getBaseUrl() {
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+  return 'http://localhost:3000';
+}
 export const config = {
   baseUrl: getBaseUrl(),
 };

@@ -1,4 +1,3 @@
-
 import { config } from "@/config";
 import { revalidateTag } from "next/cache";
 import React from "react";
@@ -6,7 +5,8 @@ import React from "react";
 async function getData() {
   console.log('todos: load')
   const res = await fetch(config.baseUrl + '/api/todos', {
-    next: { tags: ['todos'] }
+    next: { tags: ['todos'] },
+    cache: 'no-store',
   })
   return res.json()
 }
@@ -21,6 +21,7 @@ async function TodoList() {
     await fetch(config.baseUrl + "/api/todos", {
       method: "POST",
       body: JSON.stringify({ text }),
+      cache: 'no-store',
     })
 
     revalidateTag('todo');
